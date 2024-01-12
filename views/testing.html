@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Information Form</title>
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body>
+
+    <form action="/submit" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="work">What are you:</label>
+        <input type="text" id="work" name="work" required>
+
+        <label for="about">About (max 100 words):</label>
+        <textarea id="about" name="about" rows="4" required oninput="countWords(); countCharacters()"></textarea>
+        <p id="wordCount" class="word-count-error"></p>
+        <p id="charCount"></p>
+        <label for="links">Github Link</label>
+        <input type="text" id="links1" name="links0" required>
+        <label for="links">Linkedin Link</label>
+        <input type="text" id="links1" name="links1" required>
+
+
+        <label for="skills">Skills (format: html | css | js | ...):</label>
+        <input type="text" id="skills" name="skills">
+
+        <label for="projects">Projects:</label>
+        <div id="projects">
+            <div class="project">
+                <label for="project1">Project 1 Title:</label>
+                <input type="text" id="project1" name="project_title0" placeholder="Project Title" required>
+                <label for="brief1">Project 1 Brief:</label>
+                <textarea id="brief1" name="project_brief0" rows="3" placeholder="Brief description of the project"
+                    required></textarea>
+                <label for="links2">Project 1 Links:</label>
+                <input type="text" id="links2" name="project_links0" required>
+            </div>
+
+            <div class="project">
+                <label for="project2">Project 2 Title:</label>
+                <input type="text" id="project2" name="project_title1" placeholder="Project Title" required>
+                <label for="brief2">Project 2 Brief:</label>
+                <textarea id="brief2" name="project_brief1" rows="3" placeholder="Brief description of the project"
+                    required></textarea>
+                <label for="links2">Project 2 Links:</label>
+                <input type="text" id="links2" name="project_links1" required>
+            </div>
+
+            <div class="project">
+                <label for="project3">Project 3 Title:</label>
+                <input type="text" id="project3" name="project_title2" placeholder="Project Title" required>
+                <label for="brief3">Project 3 Brief:</label>
+                <textarea id="brief3" name="project_brief2" rows="3" placeholder="Brief description of the project"
+                    required></textarea>
+                <label for="links3">Project 3 Links:</label>
+                <input type="text" id="links3" name="project_links2" required>
+            </div>
+        </div>
+
+        <button type="submit" class="button2">Submit</button>
+    </form>
+    <script>
+        function countWords() {
+            let aboutTextarea = document.getElementById('about');
+            let wordCountElement = document.getElementById('wordCount');
+            let words = aboutTextarea.value.trim().split(/\s+/).length;
+
+            if (words > 100) {
+                wordCountElement.textContent = 'Word count exceeds 100. Please limit your about section.';
+            } else {
+                wordCountElement.textContent = '';
+            }
+        }
+
+        function countCharacters() {
+            let aboutTextarea = document.getElementById('about');
+            let charCountElement = document.getElementById('charCount');
+            let remainingChars = 1000 - aboutTextarea.value.length;
+
+            charCountElement.textContent = `Characters remaining: ${remainingChars}`;
+        }
+
+        function validateForm() {
+            let aboutTextarea = document.getElementById('about');
+            let words = aboutTextarea.value.trim().split(/\s+/).length;
+
+            if (words > 100) {
+                alert('Word count exceeds 100. Please limit your about section.');
+                return false;
+            }
+
+            // Additional validation logic can be added here if needed
+
+            return true;
+        }
+    </script>
+</body>
+
+</html>
