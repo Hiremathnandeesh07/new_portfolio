@@ -8,9 +8,9 @@ const port = 5000; // You can use any port you prefer
 // PostgreSQL configuration
 const pool = new Pool({
   user: "postgres",
-  host: "localhost",
+  host: "portfolio.cdeoauo08byr.us-east-1.rds.amazonaws.com",
   database: "portfolio",
-  password: "postgreNn@",
+  password: "postgrenandeesh",
   port: 5432,
 });
 
@@ -35,6 +35,9 @@ app.get("/", (req, res) => {
 app.get("/register", (req, res) => {
   res.render("register");
 });
+app.get("/testing", (req, res) => {
+  res.render("testing");
+});
 
 // Handling registration form submission
 app.post("/register", async (req, res) => {
@@ -48,10 +51,10 @@ app.post("/register", async (req, res) => {
     );
 
     // Redirect to login page
-    // res.render("/testing");
-    res.sendFile(
-      "C:\\Users\\lenovo\\Desktop\\portfolio makert\\portfolio sample\\views\\testing.html"
-    );
+    res.render("testing");
+    // res.sendFile(
+    //   "C:\\Users\\lenovo\\Desktop\\portfolio makert\\portfolio sample\\views\\testing.html"
+    // );
   } catch (error) {
     console.error("Error during registration:", error);
     res.status(500).send("Internal Server Error");
@@ -75,10 +78,10 @@ app.post("/login", async (req, res) => {
     consolr.log(result);
     if (result.rows.length > 0) {
       // User exists, redirect to main page
-      // res.render("/testing");
-      res.sendFile(
-        "C:\\Users\\lenovo\\Desktop\\portfolio makert\\portfolio sample\\views\\testing.html"
-      );
+      res.render("testing");
+      // res.sendFile(
+      //   "C:\\Users\\lenovo\\Desktop\\portfolio makert\\portfolio sample\\views\\testing.html"
+      // );
     } else {
       // User not found, redirect to registration page
       res.redirect("/register");

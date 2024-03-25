@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/list_of_templets.css">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <div class="mainhead">Welcome To Makr U'r Own Portfolio</div>
+    <div class="subhead">Pick One From Here ...</div>
+    <form action="/viewPortfolio" method="post">
+        <input type="hidden" name="userId" value="<%= userId %>">
+        <input type="hidden" name="selectedTemplate" id="selectedTemplate" value="portfolio1"> <!-- Default value -->
+
+
+        <div class="maincon">
+            <div class="temp1">
+                <div class="numbering">1</div>
+                <img src="imagess/webg.png" alt="">
+            </div>
+            <div class="btn">
+                <button type="button" onclick="setSelectedTemplate('portfolio1')" class="button2">Edit this
+                    Templet</button>
+            </div>
+        </div>
+        <div class="maincon">
+            <div class="temp1">
+                <div class="numbering">2</div>
+                <img src="imagess/webg.png" alt="">
+            </div>
+            <div class="btn">
+                <button type="button" onclick="setSelectedTemplate('portfolio2')" class="button2">Edit this
+                    Templet</button>
+            </div>
+        </div>
+        <div class="maincon">
+            <div class="temp1">
+                <div class="numbering">3</div>
+                <img src="imagess/webg.png" alt="">
+            </div>
+            <div class="btn">
+                <button type="button" onclick="setSelectedTemplate('portfolio3')" class="button2">Edit this
+                    Templet</button>
+            </div>
+        </div>
+        </div>
+        <div class="maincon">
+            <div class="temp1">
+                <div class="numbering">4</div>
+                <img src="imagess/webg.png" alt="">
+            </div>
+            <div class="btn">
+                <button type="button" onclick="setSelectedTemplate('portfolio4')" class="button2">Edit this
+                    Templet</button>
+            </div>
+        </div>
+        </div>
+    </form>
+    <script>
+        function setSelectedTemplate(value) {
+            document.getElementById('selectedTemplate').value = value;
+            // Optionally, you can log the selected value to the console
+            console.log('Selected Template:', value);
+            // Submit the form
+            document.forms[0].submit();
+        }
+    </script>
+</body>
+
+</html>
